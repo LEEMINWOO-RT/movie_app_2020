@@ -1,32 +1,21 @@
 import React from 'react';
+import './App.css';
+import { HashRouter, Route, Routes } from 'react-router-dom';
+import About from './routes/About';
+import Home from './routes/Home';
+import Navigation from './component/Navigation';
 
-class App extends React.Component {
 
-  state = {
-    count : 0,
-  };
-
-  add = () => {
-    this.setState(current => ({
-      count : current.count +1,
-    }));
-  }
-
-  minus = () => {
-    this.setState(current => ({
-      count : current.count -1,
-    }));
-  }
-
-  render() {
+function App() {
     return (
-      <div>
-    <h1>class component : {this.state.count}</h1>
-    <button onClick={this.add}>add</button>
-    <button onClick={this.minus}>minus</button>
-    </div>
+        <HashRouter>
+            <Navigation />
+            <Routes>
+                <Route path='/' Component={Home} />
+                <Route path='/about' Component={About} />
+            </Routes>
+        </HashRouter>
     );
-  }
 }
 
 export default App;
